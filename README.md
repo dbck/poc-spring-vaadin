@@ -1,6 +1,7 @@
 # Based on 
 
-* https://vaadin.com/docs/flow/spring/tutorial-spring-basic.html
+1. https://vaadin.com/docs/flow/spring/tutorial-spring-basic.html
+2. https://vaadin.com/learn/tutorials/modern-web-apps-with-spring-boot-and-vaadin/vaadin-basics-components-and-layouts
 
 # Local development environment
 
