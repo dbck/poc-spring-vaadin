@@ -10,6 +10,8 @@ import de.dbck.poc.pocspringvaadin.backend.entity.Contact;
 import de.dbck.poc.pocspringvaadin.backend.service.ContactService;
 
 @Route("")
+//@Theme(value=Material.class, variant = Material.DARK)
+//@Theme(value=Lumo.class, variant = Lumo.LIGHT)
 public class MainView extends VerticalLayout {
   private static final long serialVersionUID = 1L;
 

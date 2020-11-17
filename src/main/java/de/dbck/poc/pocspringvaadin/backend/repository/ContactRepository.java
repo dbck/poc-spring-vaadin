@@ -12,6 +12,6 @@ public interface ContactRepository extends JpaRepository<Contact, Long> {
 
   @Query("select c from Contact c "
       + "where lower(c.firstName) like lower(concat('%', :searchTerm, '%')) "
-      + "or lower(c.lastName) like lower(concat('%', :searchTerm, '%'))") // (1)
-  List<Contact> search(@Param("searchTerm") String searchTerm); // (2)
+      + "or lower(c.lastName) like lower(concat('%', :searchTerm, '%'))")
+  List<Contact> search(@Param("searchTerm") String searchTerm);
 }

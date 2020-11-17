@@ -1,5 +1,6 @@
 package de.dbck.poc.pocspringvaadin.backend.entity;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import java.util.LinkedList;
 import java.util.List;
 import javax.persistence.Entity;
@@ -10,6 +11,7 @@ import javax.persistence.OneToMany;
 public class Company extends AbstractEntity {
   private String name;
 
+  @JsonBackReference
   @OneToMany(mappedBy = "company", fetch = FetchType.EAGER)
   private List<Contact> employees = new LinkedList<>();
 
