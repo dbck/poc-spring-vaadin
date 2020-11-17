@@ -1,26 +1,35 @@
 package de.dbck.poc.pocspringvaadin;
 
-import com.vaadin.flow.component.Text;
-import com.vaadin.flow.component.button.Button;
-import com.vaadin.flow.component.datepicker.DatePicker;
-import com.vaadin.flow.component.orderedlayout.HorizontalLayout;
+import com.vaadin.flow.component.grid.Grid;
 import com.vaadin.flow.component.orderedlayout.VerticalLayout;
 import com.vaadin.flow.router.Route;
+import de.dbck.poc.pocspringvaadin.backend.entity.Contact;
+import de.dbck.poc.pocspringvaadin.backend.service.ContactService;
 
-@Route
+@Route("")
 public class MainView extends VerticalLayout {
   private static final long serialVersionUID = 1L;
 
-  public MainView() {
-    add(new Text("Welcome to MainView."));
-    Button button = new Button("I'm a button");
-    
-    button.addClickListener(clickEvent -> add(new Text("Clicked!")));
-    
-    HorizontalLayout layout = new HorizontalLayout(button, new DatePicker("Pick a date"));
-    layout.setDefaultVerticalComponentAlignment(Alignment.END);
-    add(layout);
+  private ContactService contactService;
+  private Grid<Contact> grid = new Grid<>(Contact.class);
+
+  public MainView(ContactService contactService) {
+    this.contactService = contactService;
+    addClassName("list-view");
+    setSizeFull();
+    configureGrid();
+    add(grid);
+    updateList();
   }
 
+  private void configureGrid() {
+    grid.addClassName("contact-grid");
+    grid.setSizeFull();
+    grid.setColumns("firstName", "lastName", "email", "status");
+  }
+
+  private void updateList() {
+    grid.setItems(contactService.findAll());
+  }
 }
 
